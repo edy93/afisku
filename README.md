@@ -19,12 +19,7 @@ git clone
 ```
 $ composer install
 ```
-- *Setup* file `.env` (Jika tidak ada). Kemudian jalankan:
-```
-$ php artisan key:generate
-$ php artisan migrate
-$ php artisan db:seed
-$ php artisan serve
+- *Setup* file `.env` (Jika tidak ada).
 ```
 
 ## License
