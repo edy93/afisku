@@ -1,49 +1,32 @@
-# Laravel REST API with Sanctum
+# Laravel 8 RESTful APIs Boilerplate
+Boilerplate RESTful APIs menggunakan Laravel 8
 
-This is an example of a REST API using auth tokens with Laravel Sanctum
+## Fitur
+- *Auth* (*register, verify, reset password, confirm password*)
+-  API with`Laravel/Sanctum`
 
-## Usage
+## *Requirements*
+- PHP >= 7.3
+- Git
+- Composer
 
-Change the *.env.example* to *.env* and add your database info
-
-For SQLite, add
+## *Installing*
+- *Clone* repo:
 ```
-DB_CONNECTION=sqlite
-DB_HOST=127.0.0.1
-DB_PORT=3306
+git clone 
+```
+- Jalankan:
+```
+$ composer install
+```
+- *Setup* file `.env` (Jika tidak ada). Kemudian jalankan:
+```
+$ php artisan key:generate
+$ php artisan migrate
+$ php artisan db:seed
+$ php artisan serve
 ```
 
-Create a _database.sqlite_ file in the _database_ directory
+## License
 
-```
-# Run the webserver on port 8000
-php artisan serve
-```
-
-## Routes
-
-```
-# Public
-
-GET   /api/products
-GET   /api/products/:id
-
-POST   /api/login
-@body: email, password
-
-POST   /api/register
-@body: name, email, password, password_confirmation
-
-
-# Protected
-
-POST   /api/products
-@body: name, slug, description, price
-
-PUT   /api/products/:id
-@body: ?name, ?slug, ?description, ?price
-
-DELETE  /api/products/:id
-
-POST    /api/logout
-```
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

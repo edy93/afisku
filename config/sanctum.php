@@ -43,6 +43,7 @@ return [
     */
 
     'middleware' => [
+        'auth' => App\Http\Middleware\Authenticate::class,
         'verify_csrf_token' => App\Http\Middleware\VerifyCsrfToken::class,
         'encrypt_cookies' => App\Http\Middleware\EncryptCookies::class,
     ],
