@@ -20,7 +20,6 @@ git clone
 $ composer install
 ```
 - *Setup* file `.env` (Jika tidak ada).
-```
 
 ## License
 
