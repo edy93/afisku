@@ -19,23 +19,21 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
 
-        // cek admin di database
-        $admin = $this->authRepo->cekAdmin($request);
-        if (!$admin) {
-            return ResponseFormatter::error('Maaf, anda belum terdaftar. Segera hubungi Superadmin agar dapat menggunakan aplikasi ini');
+        // cek user di database
+        $user = $this->authRepo->isPegawaiExist($request);
+        if (!$user) {
+            return ResponseFormatter::error('Maaf, NIP Anda salah atau Anda belum terdaftar. Segera hubungi Superadmin agar dapat menggunakan aplikasi ini');
         }
 
         // cek password
-        if (!$this->authRepo->cekPassword($request, $admin)) {
-            return ResponseFormatter::error('Maaf, password Anda salah. Silahkan coba kembali atau hubungi superadmin');
+        if (!$this->authRepo->matchPassword($request, $user)) {
+            return ResponseFormatter::error('Maaf, password Anda salah. Silahkan coba kembali atau hubungi Superadmin');
         }
 
         // proses mendapatkan token
-        $data['token'] = $admin->createToken(config('app.name'))->plainTextToken;
+        $data['token'] = $user->createToken(config('app.name'))->plainTextToken;
         $data['token_type'] = 'Bearer';
 
         return ResponseFormatter::success('Berhasil Login', $data);
-
-        return ResponseFormatter::errorServer();
     }
 }

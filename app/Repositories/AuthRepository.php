@@ -2,21 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Models\Admin;
+use App\Models\Pegawai;
 use Illuminate\Support\Facades\Hash;
 
 class AuthRepository
 {
-    public function cekAdmin($request)
+    public function isPegawaiExist($request)
     {
-        $admin = Admin::where('username', $request->username)->first();
-        return $admin;
+        $user = Pegawai::where('nip', $request->nip)->first();
+        return $user;
     }
 
-    public function cekPassword($request, $admin)
+    public function matchPassword($request, $user)
     {
-        $password = Hash::check($request->pass, $admin->pass);
-        
+        $password = Hash::check($request->password, $user->password);
         return $password;
     }
 }

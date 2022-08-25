@@ -27,16 +27,16 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required',
-            'pass' => 'required',
+            'nip' => 'required',
+            'password' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'username.required' => 'Username wajib diisi',
-            'pass.required' => 'Password wajib diisi',
+            'nip.required' => 'NIP wajib diisi',
+            'password.required' => 'Password wajib diisi',
         ];
     }
 

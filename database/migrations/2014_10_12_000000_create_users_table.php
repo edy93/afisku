@@ -18,9 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('username')->unique();
+            $table->string('nohp', 15)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('level_admin');
+            $table->foreignId('satker_id')->nullable()->references('id')->on('satuan_kerja')->nullOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
